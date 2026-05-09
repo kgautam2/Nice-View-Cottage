@@ -7,9 +7,11 @@ window.SITE_CONFIG = {
     initial: "N",
     location: "Pokhara, Nepal",
     footerText: "A calm cottage retreat in Pokhara, Nepal.",
-    phoneDisplay: "+977 9800000000",
-    phoneHref: "tel:+9779800000000",
-    whatsappHref: "https://wa.me/9779800000000",
+    phoneDisplay: "+1 206 327 4207",
+    phoneHref: "tel:+12063274207",
+    whatsappHref: "https://wa.me/12063274207",
+    email: "kgautam3850@gmail.com",
+    emailHref: "mailto:kgautam3850@gmail.com",
     address: "Nice View Cottage, Pokhara, Nepal",
     heroTitle: "Nice View Cottage",
     heroCopy: "A calm cottage retreat in Pokhara with mountain air, warm hospitality, and easy access to Fewa Lake, viewpoints, and local adventures."
@@ -18,14 +20,14 @@ window.SITE_CONFIG = {
   bookingLinks: [
     {
       label: "WhatsApp",
-      href: "https://wa.me/9779800000000",
+      href: "https://wa.me/12063274207",
       note: "Fast reply",
       icon: "whatsapp",
       external: true
     },
     {
       label: "Call Hotel",
-      href: "tel:+9779800000000",
+      href: "tel:+12063274207",
       note: "Direct",
       icon: "phone"
     },
@@ -48,18 +50,18 @@ window.SITE_CONFIG = {
     experienceBand: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1800&q=80",
     finalCta: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1800&q=80",
     deluxeRoom: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80",
-    lakeViewRoom: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+    lakeViewRoom: "https://images.unsplash.com/photo-1667828291018-89512ce6b71a?auto=format&fit=crop&w=1200&q=80",
     familySuite: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
     premiumSuite: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
-    paragliding: "https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=900&q=80",
+    paragliding: "https://images.unsplash.com/photo-1675092404212-382453b2ad2b?auto=format&fit=crop&w=900&q=80",
     trekking: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=80",
-    bungee: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80",
-    lakeBoating: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
+    bungee: "https://images.unsplash.com/photo-1759156499320-2fe6cc36d45c?auto=format&fit=crop&w=900&q=80",
+    lakeBoating: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fewa%20Lake%20In%20Pokhara%20Nepal.jpg",
     airportPickup: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80",
     packages: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=80",
     mountainLight: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1400&q=80",
     guestRooms: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80",
-    localViews: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80",
-    about: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80"
+    localViews: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fewa%20Lake%20In%20Pokhara%20Nepal.jpg",
+    about: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sarangkot%20Pokhara-%20Sunrise%20View.jpg"
   }
 };

@@ -100,6 +100,7 @@ function renderBookingLinks() {
         return `<a href="${link.href}"${target}>${renderBookingIcon(link.icon)}${link.label} ${link.note ? link.note.toLowerCase() : ""}</a>`;
       }).join("")}
       <a href="${hotel.phoneHref || "#"}">${hotel.phoneDisplay || "Call us"}</a>
+      <a href="${hotel.emailHref || "#"}">${hotel.email || "Email us"}</a>
       <span data-address>${hotel.address || "Pokhara, Nepal"}</span>
     `;
   }
