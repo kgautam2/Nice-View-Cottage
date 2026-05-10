@@ -41,7 +41,7 @@ window.SITE_CONFIG = {
 
   map: {
     label: "Nice View Cottage location map",
-    embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57595540.03455099!2d15.541173782527625!3d28.226970038918342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39959588dd94ec63%3A0x4b9481b5b1b193ef!2sNice%20View%20Cottage!5e0!3m2!1sen!2sus!4v1778356829612!5m2!1sen!2sus",
+    embedUrl: "https://www.google.com/maps?q=Nice%20View%20Cottage%2C%20Pokhara%2C%20Nepal&output=embed",
     openUrl: "https://maps.app.goo.gl/pGLLYLoJ39pbTcuMA"
   },
 
