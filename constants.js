@@ -1,20 +1,25 @@
 window.SITE_CONFIG = {
   basePath: "/Nice-View-Cottage/",
 
+  brand: {
+    logoSrc: "assets/simpani-hideaway-logo.jpeg?v=1",
+    logoType: "image/jpeg"
+  },
+
   hotel: {
-    name: "Nice View Cottage",
-    shortName: "Nice View Cottage",
-    initial: "N",
+    name: "Simpani Hideaway",
+    shortName: "Simpani Hideaway",
+    initial: "S",
     location: "Pokhara, Nepal",
-    footerText: "A calm cottage retreat in Pokhara, Nepal.",
+    footerText: "A quiet hideaway retreat in Pokhara, Nepal.",
     phoneDisplay: "+1 206 327 4207",
     phoneHref: "tel:+12063274207",
     whatsappHref: "https://wa.me/12063274207",
     email: "kgautam3850@gmail.com",
     emailHref: "mailto:kgautam3850@gmail.com",
-    address: "Nice View Cottage, Pokhara, Nepal",
-    heroTitle: "Nice View Cottage",
-    heroCopy: "A calm cottage retreat in Pokhara with mountain air, warm hospitality, and easy access to Fewa Lake, viewpoints, and local adventures."
+    address: "Simpani Hideaway, Pokhara, Nepal",
+    heroTitle: "Simpani Hideaway",
+    heroCopy: "A quiet hideaway retreat in Pokhara with mountain air, warm hospitality, and easy access to Fewa Lake, viewpoints, and local adventures."
   },
 
   bookingLinks: [
@@ -40,8 +45,8 @@ window.SITE_CONFIG = {
   ],
 
   map: {
-    label: "Nice View Cottage location map",
-    embedUrl: "https://www.google.com/maps?q=Nice%20View%20Cottage%2C%20Pokhara%2C%20Nepal&output=embed",
+    label: "Simpani Hideaway location map",
+    embedUrl: "https://www.google.com/maps?q=Simpani%20Hideaway%2C%20Pokhara%2C%20Nepal&output=embed",
     openUrl: "https://maps.app.goo.gl/pGLLYLoJ39pbTcuMA"
   },
 
@@ -65,3 +70,30 @@ window.SITE_CONFIG = {
     about: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sarangkot%20Pokhara-%20Sunrise%20View.jpg"
   }
 };
+
+window.resolveSiteAssetPath = function resolveSiteAssetPath(path) {
+  const basePath = window.location.hostname.endsWith("github.io") ? (window.SITE_CONFIG.basePath || "/") : "/";
+  if (!path || /^(https?:|mailto:|tel:|#)/.test(path)) return path;
+  if (path.startsWith("/")) return path;
+  return `${basePath.replace(/\/$/, "")}/${path}`;
+};
+
+(function applyConfiguredSiteIcon() {
+  const brand = window.SITE_CONFIG.brand || {};
+  const logoSrc = window.resolveSiteAssetPath(brand.logoSrc || "");
+  if (!logoSrc) return;
+
+  document.documentElement.style.setProperty("--brand-logo", `url("${logoSrc}")`);
+  document.documentElement.classList.add("brand-logo-ready");
+
+  let icon = document.querySelector("[data-site-icon]") || document.querySelector('link[rel="icon"]');
+  if (!icon) {
+    icon = document.createElement("link");
+    icon.rel = "icon";
+    icon.dataset.siteIcon = "";
+    document.head.append(icon);
+  }
+
+  icon.href = logoSrc;
+  icon.type = brand.logoType || icon.type || "image/jpeg";
+})();

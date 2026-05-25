@@ -5,14 +5,18 @@ const bookingToggles = document.querySelectorAll("[data-booking-toggle]");
 const bookingTriggers = document.querySelectorAll("[data-booking-trigger]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
+const header = document.querySelector("[data-header]");
 
 function applySiteConstants() {
+  const brand = config.brand || {};
   const hotel = config.hotel || {};
   const images = config.images || {};
   const map = config.map || {};
 
+  applyBrandLogo(brand);
+
   if (hotel.name) {
-    document.title = document.title.replace("Nice View Cottage", hotel.name);
+    document.title = document.title.replace("Simpani Hideaway", hotel.name);
   }
 
   document.querySelectorAll("[data-brand-name]").forEach((element) => {
@@ -73,7 +77,21 @@ function applySiteConstants() {
   });
 }
 
+function applyBrandLogo(brand) {
+  const logoSrc = resolveAssetPath(brand.logoSrc || "");
+  if (!logoSrc) return;
+
+  document.documentElement.style.setProperty("--brand-logo", `url("${logoSrc}")`);
+  document.documentElement.classList.add("brand-logo-ready");
+
+  document.querySelectorAll("[data-site-icon]").forEach((icon) => {
+    icon.href = logoSrc;
+    if (brand.logoType) icon.type = brand.logoType;
+  });
+}
+
 function resolveAssetPath(path) {
+  if (window.resolveSiteAssetPath) return window.resolveSiteAssetPath(path);
   if (!path || /^(https?:|mailto:|tel:|#)/.test(path)) return path;
   if (path.startsWith("/")) return path;
   return `${basePath.replace(/\/$/, "")}/${path}`;
@@ -104,6 +122,18 @@ function renderBookingLinks() {
       <span data-address>${hotel.address || "Pokhara, Nepal"}</span>
     `;
   }
+
+  document.querySelectorAll("[data-nav-reserve]").forEach((panel) => {
+    const hotel = config.hotel || {};
+    panel.innerHTML = `
+      <span>Reservations</span>
+      <strong>${hotel.phoneDisplay || "Call the hotel"}</strong>
+      <div>
+        <a href="${hotel.whatsappHref || "#"}" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a href="contact.html#inquiry">Inquiry</a>
+      </div>
+    `;
+  });
 }
 
 function renderBookingIcon(icon) {
@@ -118,6 +148,16 @@ function renderBookingIcon(icon) {
 
 applySiteConstants();
 renderBookingLinks();
+
+function updateHeaderTone() {
+  if (!header || !header.classList.contains("home-header")) return;
+  header.classList.toggle("is-scrolled", window.scrollY > Math.max(90, window.innerHeight * 0.35));
+}
+
+updateHeaderTone();
+window.addEventListener("scroll", updateHeaderTone, { passive: true });
+window.addEventListener("load", updateHeaderTone);
+window.setTimeout(updateHeaderTone, 250);
 
 function setBookingState(open) {
   bookingMenus.forEach((menu) => menu.classList.toggle("is-open", open));
@@ -146,10 +186,20 @@ bookingTriggers.forEach((trigger) => {
 });
 
 if (menuToggle && nav) {
+  const setNavState = (open) => {
+    nav.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+    document.body.dataset.navOpen = open ? "true" : "false";
+    menuToggle.setAttribute("aria-expanded", String(open));
+  };
+
   menuToggle.addEventListener("click", () => {
     const open = !nav.classList.contains("is-open");
-    nav.classList.toggle("is-open", open);
-    menuToggle.setAttribute("aria-expanded", String(open));
+    setNavState(open);
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setNavState(false));
   });
 }
 
@@ -160,6 +210,8 @@ document.addEventListener("click", (event) => {
 
   if (nav && menuToggle && !nav.contains(event.target) && !menuToggle.contains(event.target)) {
     nav.classList.remove("is-open");
+    document.body.classList.remove("nav-open");
+    document.body.dataset.navOpen = "false";
     menuToggle.setAttribute("aria-expanded", "false");
   }
 });
@@ -169,6 +221,8 @@ document.addEventListener("keydown", (event) => {
     setBookingState(false);
     if (nav && menuToggle) {
       nav.classList.remove("is-open");
+      document.body.classList.remove("nav-open");
+      document.body.dataset.navOpen = "false";
       menuToggle.setAttribute("aria-expanded", "false");
     }
   }
