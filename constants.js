@@ -45,27 +45,27 @@ window.SITE_CONFIG = {
   ],
 
   map: {
-    label: "Simpani Hideaway location map",
-    embedUrl: "https://www.google.com/maps?q=Simpani%20Hideaway%2C%20Pokhara%2C%20Nepal&output=embed",
-    openUrl: "https://maps.app.goo.gl/pGLLYLoJ39pbTcuMA"
+    label: "Nice View Cottage location map",
+    embedUrl: "https://www.google.com/maps?q=Nice%20View%20Cottage%2C%20Pokhara%2C%20Nepal&output=embed",
+    openUrl: "https://www.google.com/maps/search/?api=1&query=Nice%20View%20Cottage%2C%20Pokhara%2C%20Nepal"
   },
 
   images: {
     hero: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2200&q=85",
-    experienceBand: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1800&q=80",
-    finalCta: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1800&q=80",
-    deluxeRoom: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80",
-    lakeViewRoom: "https://images.unsplash.com/photo-1667828291018-89512ce6b71a?auto=format&fit=crop&w=1200&q=80",
-    familySuite: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
-    premiumSuite: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
-    paragliding: "https://images.unsplash.com/photo-1675092404212-382453b2ad2b?auto=format&fit=crop&w=900&q=80",
-    trekking: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=80",
-    bungee: "https://images.unsplash.com/photo-1759156499320-2fe6cc36d45c?auto=format&fit=crop&w=900&q=80",
+    experienceBand: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1600&q=78",
+    finalCta: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=78",
+    deluxeRoom: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=75",
+    lakeViewRoom: "https://images.unsplash.com/photo-1667828291018-89512ce6b71a?auto=format&fit=crop&w=900&q=75",
+    familySuite: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=75",
+    premiumSuite: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=75",
+    paragliding: "https://images.unsplash.com/photo-1675092404212-382453b2ad2b?auto=format&fit=crop&w=900&q=75",
+    trekking: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=75",
+    bungee: "https://images.unsplash.com/photo-1759156499320-2fe6cc36d45c?auto=format&fit=crop&w=900&q=75",
     lakeBoating: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fewa%20Lake%20In%20Pokhara%20Nepal.jpg",
-    airportPickup: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80",
-    packages: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=80",
-    mountainLight: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1400&q=80",
-    guestRooms: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80",
+    airportPickup: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=75",
+    packages: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=75",
+    mountainLight: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=75",
+    guestRooms: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=900&q=75",
     localViews: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fewa%20Lake%20In%20Pokhara%20Nepal.jpg",
     about: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sarangkot%20Pokhara-%20Sunrise%20View.jpg"
   }

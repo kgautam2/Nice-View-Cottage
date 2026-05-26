@@ -7,6 +7,8 @@ const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
 
+document.documentElement.classList.add("reveal-ready");
+
 function applySiteConstants() {
   const brand = config.brand || {};
   const hotel = config.hotel || {};
@@ -101,12 +103,12 @@ function renderBookingLinks() {
   const links = config.bookingLinks || [];
   if (!links.length) return;
 
-  document.querySelectorAll("[data-booking-panel]").forEach((panel) => {
-    panel.innerHTML = links.map((link) => {
-      const target = link.external ? ' target="_blank" rel="noreferrer"' : "";
-      return `<a href="${link.href}"${target}>${renderBookingIcon(link.icon)}<strong>${link.label}</strong> <span>${link.note || ""}</span></a>`;
-    }).join("");
-  });
+	  document.querySelectorAll("[data-booking-panel]").forEach((panel) => {
+	    panel.innerHTML = links.map((link) => {
+	      const target = link.external ? ` target="_blank" rel="noreferrer" aria-label="${link.label} (opens in new tab)"` : "";
+	      return `<a href="${link.href}"${target}>${renderBookingIcon(link.icon)}<strong>${link.label}</strong> <span>${link.note || ""}</span></a>`;
+	    }).join("");
+	  });
 
   const contactBooking = document.querySelector("[data-contact-booking]");
   if (contactBooking) {
@@ -114,7 +116,7 @@ function renderBookingLinks() {
     contactBooking.innerHTML = `
       <h2>Booking paths</h2>
       ${links.map((link) => {
-        const target = link.external ? ' target="_blank" rel="noreferrer"' : "";
+        const target = link.external ? ` target="_blank" rel="noreferrer" aria-label="${link.label} (opens in new tab)"` : "";
         return `<a href="${link.href}"${target}>${renderBookingIcon(link.icon)}${link.label} ${link.note ? link.note.toLowerCase() : ""}</a>`;
       }).join("")}
       <a href="${hotel.phoneHref || "#"}">${hotel.phoneDisplay || "Call us"}</a>
@@ -127,12 +129,12 @@ function renderBookingLinks() {
     const hotel = config.hotel || {};
     panel.innerHTML = `
       <span>Reservations</span>
-      <strong>${hotel.phoneDisplay || "Call the hotel"}</strong>
-      <div>
-        <a href="${hotel.whatsappHref || "#"}" target="_blank" rel="noreferrer">WhatsApp</a>
-        <a href="contact.html#inquiry">Inquiry</a>
-      </div>
-    `;
+	      <strong>${hotel.phoneDisplay || "Call the hotel"}</strong>
+	      <div>
+	        <a href="${hotel.whatsappHref || "#"}" target="_blank" rel="noreferrer" aria-label="Contact via WhatsApp (opens in new tab)">WhatsApp</a>
+	        <a href="contact.html#inquiry">Inquiry</a>
+	      </div>
+	    `;
   });
 }
 
@@ -150,6 +152,7 @@ applySiteConstants();
 renderBookingLinks();
 
 function updateHeaderTone() {
+  // Inner pages keep the persistent compact header; the scroll tone only applies to the home hero header.
   if (!header || !header.classList.contains("home-header")) return;
   header.classList.toggle("is-scrolled", window.scrollY > Math.max(90, window.innerHeight * 0.35));
 }
@@ -188,6 +191,9 @@ bookingTriggers.forEach((trigger) => {
 if (menuToggle && nav) {
   const setNavState = (open) => {
     nav.classList.toggle("is-open", open);
+    nav.style.opacity = open ? "1" : "";
+    nav.style.pointerEvents = open ? "auto" : "";
+    nav.style.transform = open ? "translateX(0)" : "";
     document.body.classList.toggle("nav-open", open);
     document.body.dataset.navOpen = open ? "true" : "false";
     menuToggle.setAttribute("aria-expanded", String(open));
@@ -208,22 +214,58 @@ document.addEventListener("click", (event) => {
     setBookingState(false);
   }
 
-  if (nav && menuToggle && !nav.contains(event.target) && !menuToggle.contains(event.target)) {
-    nav.classList.remove("is-open");
-    document.body.classList.remove("nav-open");
-    document.body.dataset.navOpen = "false";
-    menuToggle.setAttribute("aria-expanded", "false");
-  }
+	  if (nav && menuToggle && !nav.contains(event.target) && !menuToggle.contains(event.target)) {
+	    nav.classList.remove("is-open");
+	    nav.style.opacity = "";
+	    nav.style.pointerEvents = "";
+	    nav.style.transform = "";
+	    document.body.classList.remove("nav-open");
+	    document.body.dataset.navOpen = "false";
+	    menuToggle.setAttribute("aria-expanded", "false");
+	  }
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     setBookingState(false);
-    if (nav && menuToggle) {
-      nav.classList.remove("is-open");
-      document.body.classList.remove("nav-open");
-      document.body.dataset.navOpen = "false";
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
+	    if (nav && menuToggle) {
+	      nav.classList.remove("is-open");
+	      nav.style.opacity = "";
+	      nav.style.pointerEvents = "";
+	      nav.style.transform = "";
+	      document.body.classList.remove("nav-open");
+	      document.body.dataset.navOpen = "false";
+	      menuToggle.setAttribute("aria-expanded", "false");
+	    }
   }
 });
+
+const revealItems = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window && revealItems.length) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+  revealItems.forEach((element) => revealObserver.observe(element));
+} else {
+  revealItems.forEach((element) => element.classList.add("visible"));
+}
+
+const contactForm = document.querySelector(".contact-form");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    contactForm.innerHTML = `
+      <div class="form-confirmation" role="status" aria-live="polite">
+        <p><strong>Thank you.</strong> We will be in touch shortly. Expect a reply within 24 hours via email or WhatsApp.</p>
+      </div>
+    `;
+  });
+}

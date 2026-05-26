@@ -1,28 +1,31 @@
 <!doctype html>
 <html lang="en">
-  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Contact | Simpani Hideaway</title><script src="constants.js?v=3"></script>
-    <link rel="stylesheet" href="styles.css?v=15"></head>
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Contact | Simpani Hideaway</title><script src="constants.js?v=5"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=22"></head>
   <body>
     <header class="site-header inner" data-header>
       <a class="brand" href="index.html"><span class="brand-mark" data-brand-initial>S</span><span data-brand-name>Simpani Hideaway</span></a><button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
-      <nav class="nav-links" data-nav><a href="rooms.html">Rooms</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="location.html">Location</a><a href="about.html">About</a><a href="contact.html" aria-current="page">Contact</a><div class="nav-reserve" data-nav-reserve></div></nav>
       <div class="booking-menu" data-booking><button class="button button-dark" type="button" aria-expanded="false" data-booking-toggle>Book Now</button><div class="booking-panel" data-booking-panel></div></div>
     </header>
+    <nav class="nav-links" data-nav><a href="rooms.html">Rooms</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="location.html">Location</a><a href="about.html">About</a><a href="contact.html" aria-current="page">Contact</a><div class="nav-reserve" data-nav-reserve></div></nav>
     <main class="page">
       <section class="page-hero"><p class="eyebrow">Contact</p><h1>Direct inquiry and travel questions in one place.</h1><p>Tell us your dates, room preference, and any activities you want arranged during your Pokhara stay.</p></section>
       <section class="section contact-layout" id="inquiry">
-        <form class="contact-form" action="#" method="post">
-          <label>Name<input name="name" type="text"></label>
-          <label>Email<input name="email" type="email"></label>
+        <form class="contact-form reveal" action="#" method="post">
+          <label>Name<input name="name" type="text" required></label>
+          <label>Email<input name="email" type="email" required></label>
           <label>Travel dates<input name="dates" type="text"></label>
-          <label>Message<textarea name="message" rows="5"></textarea></label>
+          <label>Message<textarea name="message" rows="5" required></textarea></label>
           <button class="button button-dark" type="submit">Send Inquiry</button>
         </form>
         <aside class="contact-card" data-contact-booking></aside>
       </section>
     </main>
-    <div class="mobile-actions"><button type="button" data-booking-trigger>Book</button><a data-phone-link href="#">Call</a><a data-whatsapp-link href="#" target="_blank" rel="noreferrer">WhatsApp</a></div>
+    <div class="mobile-actions"><button type="button" data-booking-trigger>Book</button><a data-phone-link href="#">Call</a><a data-whatsapp-link href="#" target="_blank" rel="noreferrer" aria-label="Contact via WhatsApp (opens in new tab)">WhatsApp</a></div>
     <footer class="site-footer"><div><strong data-footer-brand>Simpani Hideaway</strong><p data-footer-text>A quiet hideaway retreat in Pokhara, Nepal.</p></div><div><a href="rooms.html">Rooms</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a></div></footer>
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
   </body>
 </html>
